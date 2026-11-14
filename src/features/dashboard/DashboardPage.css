@@ -1,0 +1,79 @@
+/* src/features/dashboard/DashboardPage.css */
+/* ─────────────────────────────────────────────────────────────
+   Dashboard Page — placeholder styles only.
+   This file will grow as stat cards, charts, and panels are
+   added in later steps.
+   ───────────────────────────────────────────────────────────── */
+
+.dashboard-page {
+  min-height: 100%;
+  display:    flex;
+  flex-direction: column;
+}
+
+/* ── Placeholder panel ───────────────────────────────────── */
+.dashboard-placeholder {
+  display:         flex;
+  flex-direction:  column;
+  align-items:     center;
+  justify-content: center;
+  gap:             var(--space-4);
+  padding:         var(--space-12) var(--space-6);
+  text-align:      center;
+  flex:            1;
+}
+
+.dashboard-placeholder__illustration {
+  margin-bottom: var(--space-2);
+}
+
+.dashboard-placeholder__title {
+  font-size:   var(--text-xl);
+  font-weight: var(--font-bold);
+  color:       var(--color-text-primary);
+  margin:      0;
+  /* Override base.css heading scale */
+  line-height: var(--leading-snug);
+}
+
+.dashboard-placeholder__body {
+  font-size:   var(--text-base);
+  color:       var(--color-text-secondary);
+  max-width:   38ch;
+  line-height: var(--leading-relaxed);
+  margin:      0;
+}
+
+/* Zone indicators */
+.dashboard-placeholder__zones {
+  display:     flex;
+  flex-wrap:   wrap;
+  gap:         var(--space-3);
+  justify-content: center;
+  margin-top:  var(--space-2);
+}
+
+.dashboard-placeholder__zone {
+  display:       flex;
+  align-items:   center;
+  gap:           var(--space-2);
+  font-size:     var(--text-sm);
+  font-weight:   var(--font-semibold);
+  color:         var(--color-text-secondary);
+  background:    var(--color-card-bg);
+  border:        1px solid var(--color-card-border);
+  border-radius: var(--radius-full);
+  padding:       var(--space-2) var(--space-4);
+  box-shadow:    var(--color-card-shadow);
+}
+
+.dashboard-placeholder__zone-dot {
+  width:         8px;
+  height:        8px;
+  border-radius: var(--radius-full);
+  flex-shrink:   0;
+}
+
+.dashboard-placeholder__zone-dot--green  { background: var(--brand-green);  }
+.dashboard-placeholder__zone-dot--yellow { background: var(--brand-yellow); }
+.dashboard-placeholder__zone-dot--orange { background: var(--brand-orange); }

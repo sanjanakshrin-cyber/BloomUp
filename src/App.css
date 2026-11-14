@@ -1,1 +1,21 @@
-/* BloomUp app-specific styles will go here. */
+/* src/App.css */
+/* ─────────────────────────────────────────────────────────────
+   App-level layout rules.
+   These ensure the page fills the full viewport height so the
+   dashboard shell stretches correctly.
+   
+   All colours and spacing still come from tokens.css.
+   ───────────────────────────────────────────────────────────── */
+
+/* Make html, body, and the React root fill the full viewport */
+html,
+body {
+  height: 100%;
+}
+
+/* Vite mounts the app into <div id="root"> — make it fill too */
+#root {
+  height:         100%;
+  display:        flex;
+  flex-direction: column;
+}

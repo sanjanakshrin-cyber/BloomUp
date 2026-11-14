@@ -1,0 +1,282 @@
+/* src/components/layout/Sidebar.css */
+/* ─────────────────────────────────────────────────────────────
+   Sidebar
+   Slim vertical panel fixed to the left of the shell.
+   64px wide collapsed; expands to 200px on wider viewports.
+   All colours come from CSS variables — never hardcoded.
+   ───────────────────────────────────────────────────────────── */
+
+/* ── Shell ───────────────────────────────────────────────── */
+.sidebar {
+  display:         flex;
+  flex-direction:  column;
+  align-items:     center;
+  width:           var(--sidebar-width);           /* 64px */
+  min-height:      100%;
+  background:      var(--color-sidebar-bg);
+  border-right:    1px solid var(--color-sidebar-border);
+  padding:         var(--space-4) 0 var(--space-4);
+  gap:             var(--space-2);
+  flex-shrink:     0;
+  overflow:        hidden;
+
+  /* Smooth expansion transition */
+  transition:
+    width            var(--transition-base),
+    background-color var(--transition-theme),
+    border-color     var(--transition-theme);
+}
+
+/* ── Logo area ───────────────────────────────────────────── */
+.sidebar__logo {
+  display:        flex;
+  align-items:    center;
+  gap:            var(--space-3);
+  width:          100%;
+  padding:        0 var(--space-3);
+  margin-bottom:  var(--space-4);
+  overflow:       hidden;
+  flex-shrink:    0;
+}
+
+.sidebar__logo-mark {
+  flex-shrink: 0;
+}
+
+.sidebar__logo-text {
+  font-family:    var(--font-family-base);
+  font-size:      var(--text-md);
+  font-weight:    var(--font-extrabold);
+  color:          var(--color-sidebar-logo);
+  white-space:    nowrap;
+  opacity:        0;             /* hidden in collapsed state */
+  pointer-events: none;
+  transition:     opacity var(--transition-base);
+}
+
+/* ── Nav list ────────────────────────────────────────────── */
+.sidebar__nav {
+  flex:    1;
+  width:   100%;
+  overflow: hidden;
+}
+
+.sidebar__nav-list {
+  display:        flex;
+  flex-direction: column;
+  gap:            var(--space-1);
+  padding:        0 var(--space-2);
+  list-style:     none;
+}
+
+/* ── Nav item (button) ───────────────────────────────────── */
+.sidebar__nav-item {
+  display:         flex;
+  align-items:     center;
+  gap:             var(--space-3);
+  width:           100%;
+  padding:         var(--space-3);
+  border-radius:   var(--radius-md);
+  border:          none;
+  background:      transparent;
+  color:           var(--color-sidebar-icon);
+  cursor:          pointer;
+  font-family:     var(--font-family-base);
+  font-size:       var(--text-sm);
+  font-weight:     var(--font-semibold);
+  white-space:     nowrap;
+  overflow:        hidden;
+  transition:
+    background-color var(--transition-base),
+    color            var(--transition-base);
+}
+
+.sidebar__nav-item:hover {
+  background: var(--color-sidebar-bg-hover);
+}
+
+.sidebar__nav-item:focus-visible {
+  outline:        2px solid var(--brand-green);
+  outline-offset: 2px;
+}
+
+/* Active state — green pill + white icon */
+.sidebar__nav-item--active {
+  background: var(--color-sidebar-pill-active);
+  color:      var(--color-sidebar-icon-active);
+}
+
+.sidebar__nav-item--active:hover {
+  background: var(--color-sidebar-pill-active);
+  opacity:    0.92;
+}
+
+.sidebar__nav-icon {
+  display:     flex;
+  align-items: center;
+  flex-shrink: 0;
+  width:       20px;
+  height:      20px;
+}
+
+.sidebar__nav-label {
+  opacity:        0;             /* hidden in collapsed state */
+  pointer-events: none;
+  transition:     opacity var(--transition-base);
+  flex-shrink:    0;
+}
+
+/* ── Bottom controls ─────────────────────────────────────── */
+.sidebar__bottom {
+  display:        flex;
+  flex-direction: column;
+  align-items:    center;
+  gap:            var(--space-3);
+  padding-top:    var(--space-4);
+  border-top:     1px solid var(--color-sidebar-border);
+  width:          100%;
+  padding-left:   var(--space-2);
+  padding-right:  var(--space-2);
+}
+
+/* Theme toggle button */
+.sidebar__theme-toggle {
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  width:           40px;
+  height:          40px;
+  border-radius:   var(--radius-md);
+  border:          none;
+  background:      transparent;
+  color:           var(--color-sidebar-icon);
+  cursor:          pointer;
+  transition:
+    background-color var(--transition-base),
+    color            var(--transition-base);
+}
+
+.sidebar__theme-toggle:hover {
+  background: var(--color-sidebar-bg-hover);
+}
+
+.sidebar__theme-toggle:focus-visible {
+  outline:        2px solid var(--brand-green);
+  outline-offset: 2px;
+}
+
+/* User avatar button */
+.sidebar__avatar {
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  width:           36px;
+  height:          36px;
+  border-radius:   var(--radius-full);
+  border:          2px solid var(--color-sidebar-border);
+  background:      var(--brand-green);
+  color:           var(--brand-white);
+  font-family:     var(--font-family-base);
+  font-size:       var(--text-sm);
+  font-weight:     var(--font-bold);
+  cursor:          pointer;
+  flex-shrink:     0;
+  transition:
+    border-color     var(--transition-base),
+    box-shadow       var(--transition-base);
+}
+
+.sidebar__avatar:hover {
+  box-shadow: 0 0 0 3px rgba(132, 194, 51, 0.25);
+}
+
+.sidebar__avatar:focus-visible {
+  outline:        2px solid var(--brand-green);
+  outline-offset: 2px;
+}
+
+/* ── Expanded state (desktop ≥ 900px) ────────────────────── */
+@media (min-width: 900px) {
+  .sidebar {
+    width:      var(--sidebar-width-expanded);  /* 220px */
+    align-items: flex-start;
+  }
+
+  .sidebar__logo {
+    padding: 0 var(--space-4);
+  }
+
+  .sidebar__logo-text {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .sidebar__nav-list {
+    padding: 0 var(--space-3);
+  }
+
+  .sidebar__nav-item {
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .sidebar__nav-label {
+    opacity:        1;
+    pointer-events: auto;
+  }
+
+  .sidebar__bottom {
+    align-items:  flex-start;
+    flex-direction: row;
+    padding-left:  var(--space-3);
+    padding-right: var(--space-3);
+  }
+}
+
+/* ── Mobile: sidebar collapses to bottom tab bar ─────────── */
+@media (max-width: 639px) {
+  .sidebar {
+    width:          100%;
+    min-height:     unset;
+    height:         60px;
+    flex-direction: row;
+    align-items:    center;
+    justify-content: space-around;
+    padding:        0 var(--space-2);
+    border-right:   none;
+    border-top:     1px solid var(--color-sidebar-border);
+    /* Move to bottom of screen */
+    order: 10;
+  }
+
+  .sidebar__logo {
+    display:  none;   /* hide logo on mobile tab bar */
+  }
+
+  .sidebar__nav {
+    flex:    unset;
+    width:   auto;
+  }
+
+  .sidebar__nav-list {
+    flex-direction: row;
+    gap:            0;
+    padding:        0;
+  }
+
+  .sidebar__nav-item {
+    padding:      var(--space-2);
+    border-radius: var(--radius-md);
+    gap:           0;
+  }
+
+  .sidebar__nav-label {
+    display: none;
+  }
+
+  .sidebar__bottom {
+    flex-direction: row;
+    border-top:     none;
+    padding:        0;
+    gap:            var(--space-2);
+  }
+}

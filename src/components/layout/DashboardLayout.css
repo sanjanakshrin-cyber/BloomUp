@@ -1,0 +1,125 @@
+/* src/components/layout/DashboardLayout.css */
+/* ─────────────────────────────────────────────────────────────
+   Dashboard Layout Shell
+   Three-zone layout:
+     1. Sage green page background (full viewport)
+     2. White/dark-green rounded shell (inset card)
+     3. Inside the shell: sidebar + body column
+        Inside the body: topbar + content row
+        Inside content row: main + optional right panel
+   ───────────────────────────────────────────────────────────── */
+
+/* ── 1. Full-screen page background ─────────────────────── */
+.layout-page {
+  min-height:       100vh;
+  background-color: var(--color-bg-page);
+  display:          flex;
+  align-items:      stretch;
+  padding:          var(--space-4);
+}
+
+/* ── 2. Dashboard shell (the rounded inset container) ────── */
+.layout-shell {
+  flex:             1;
+  display:          flex;
+  flex-direction:   row;
+  background:       var(--color-bg-shell);
+  border-radius:    var(--radius-2xl);        /* 28px — premium rounded look */
+  box-shadow:       var(--color-bg-shell-shadow);
+  overflow:         hidden;                   /* clips children to border-radius */
+  min-height:       calc(100vh - var(--space-8)); /* full height minus page padding */
+  max-width:        var(--shell-max-width);
+  width:            100%;
+  margin:           0 auto;
+}
+
+/* ── 3. Body column (everything right of the sidebar) ────── */
+.layout-body {
+  flex:            1;
+  display:         flex;
+  flex-direction:  column;
+  min-width:       0;   /* prevents flex overflow on narrow screens */
+  overflow:        hidden;
+}
+
+/* ── 4. Content row (main + right panel) ─────────────────── */
+.layout-content-row {
+  flex:            1;
+  display:         flex;
+  flex-direction:  row;
+  min-height:      0;   /* allows children to scroll independently */
+  overflow:        hidden;
+}
+
+/* ── 5. Main content area ────────────────────────────────── */
+.layout-main {
+  flex:            1;
+  min-width:       0;
+  overflow-y:      auto;
+  padding:         var(--space-6);
+  background:      var(--color-bg-page);  /* inner area matches page bg */
+}
+
+/* Focus ring for skip-link target */
+.layout-main:focus {
+  outline: none;   /* managed by skip-link styles in base.css */
+}
+
+/* ── 6. Right panel ──────────────────────────────────────── */
+.layout-right-panel {
+  width:           280px;
+  flex-shrink:     0;
+  overflow-y:      auto;
+  background:      var(--color-bg-shell);
+  border-left:     1px solid var(--color-border-subtle);
+  padding:         var(--space-6) var(--space-4);
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+
+/* Tablet: tighter padding, right panel hides */
+@media (max-width: 1100px) {
+  .layout-right-panel {
+    display: none;
+  }
+}
+
+/* Tablet portrait: reduce shell padding */
+@media (max-width: 768px) {
+  .layout-page {
+    padding: var(--space-2);
+  }
+
+  .layout-shell {
+    border-radius: var(--radius-xl);
+    min-height:    calc(100vh - var(--space-4));
+  }
+
+  .layout-main {
+    padding: var(--space-4);
+  }
+}
+
+/* Mobile: stack sidebar below content (sidebar becomes bottom bar) */
+@media (max-width: 639px) {
+  .layout-page {
+    padding:        0;
+    align-items:    stretch;
+  }
+
+  .layout-shell {
+    flex-direction: column;
+    border-radius:  0;
+    min-height:     100vh;
+    box-shadow:     none;
+  }
+
+  .layout-body {
+    /* Body takes all space above the bottom tab bar */
+    flex: 1;
+  }
+
+  .layout-main {
+    padding: var(--space-3) var(--space-4);
+  }
+}
