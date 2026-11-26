@@ -1,0 +1,101 @@
+/* ==========================================================================
+   BloomUp Centralized Design System & Theme Variables
+   Brand Palette:
+     Primary Green : #84C233
+     Yellow        : #F6C827
+     Orange        : #F7931E
+     Brown         : #493D33
+     White         : #FFFFFF
+   Typography: Mulish
+   ========================================================================== */
+
+:root {
+  /* Core Brand Tokens */
+  --brand-green: #84C233;
+  --brand-green-hover: #73ad28;
+  --brand-green-active: #629620;
+  --brand-yellow: #F6C827;
+  --brand-orange: #F7931E;
+  --brand-brown: #493D33;
+  --brand-white: #FFFFFF;
+
+  /* Typography */
+  --font-sans: 'Mulish', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Radii & Organic Leaf Shapes */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-xl: 28px;
+  --radius-pill: 9999px;
+  --radius-leaf: 22px 4px 22px 22px;
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-base: 240ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Light Theme (Warm Cream & Soft Sage Surfaces) */
+[data-theme='light'],
+:root {
+  --bg-canvas: #F3F8EE;
+  --bg-page: #FBFDF9;
+  --bg-surface: #FFFFFF;
+  --bg-surface-alt: #EFF6E8;
+  --bg-sidebar: #FFFFFF;
+  --bg-highlight: #FEF9E6;
+  --bg-badge-green: #EBF5DE;
+  --bg-badge-yellow: #FEF6D8;
+  --bg-badge-orange: #FEEEDC;
+  --bg-badge-brown: #F2EFEA;
+
+  --text-primary: #1F331E;
+  --text-secondary: #546652;
+  --text-muted: #7B8C78;
+  --text-on-green: #FFFFFF;
+  --text-heading: #162915;
+
+  --border-subtle: #E2ECD9;
+  --border-strong: #C9DBC0;
+
+  --shadow-sm: 0 2px 10px rgba(31, 51, 30, 0.04);
+  --shadow-md: 0 8px 28px rgba(31, 51, 30, 0.06);
+  --shadow-lg: 0 18px 46px rgba(31, 51, 30, 0.09);
+
+  --nav-active-bg: #EBF5DE;
+  --input-bg: #FFFFFF;
+  --skeleton-base: #E7F0DF;
+  --skeleton-shine: #F4F9F0;
+}
+
+/* Dark Theme (Deep Forest Green Surfaces) */
+[data-theme='dark'] {
+  --bg-canvas: #0E2215;
+  --bg-page: #112819;
+  --bg-surface: #1A3724;
+  --bg-surface-alt: #21432D;
+  --bg-sidebar: #142C1C;
+  --bg-highlight: #243F28;
+  --bg-badge-green: rgba(132, 194, 51, 0.16);
+  --bg-badge-yellow: rgba(246, 200, 39, 0.16);
+  --bg-badge-orange: rgba(247, 147, 30, 0.18);
+  --bg-badge-brown: rgba(255, 255, 255, 0.09);
+
+  --text-primary: #F4F8F2;
+  --text-secondary: #B6C9B8;
+  --text-muted: #849D88;
+  --text-on-green: #0F2315;
+  --text-heading: #FFFFFF;
+
+  --border-subtle: #284D35;
+  --border-strong: #376447;
+
+  --shadow-sm: 0 2px 12px rgba(0, 0, 0, 0.22);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.28);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.36);
+
+  --nav-active-bg: rgba(132, 194, 51, 0.18);
+  --input-bg: #142C1C;
+  --skeleton-base: #21432D;
+  --skeleton-shine: #2A5238;
+}
